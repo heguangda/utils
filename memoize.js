@@ -9,7 +9,8 @@ function createhash (str){
 const mappings = [
 	{ id: '111', phone: '111111' },
 	{ id: '222', phone: '222222' },
-	{ id: '333', phone: '333333' },
+  { id: '333', phone: '333333' },
+  { id: 'c41ed3222c70899c122feb82bc85c297', phoen: '12345777777'}
 ];
 const slow = id => {
 	console.log("i am slow");
@@ -19,19 +20,17 @@ const slow = id => {
 const memoize = function ( func , hasher ){
   const cache = {}
 	return v => {
-    if (!cache[v]) {
+    let tempV = v
+    if (typeof tempV === 'object') {
+      tempV = createhash(JSON.stringify(tempV))
+    }
+    if (!cache[tempV]) {
       console.log('新值')
-      if (typeof v === 'object') {
-        var tempV = createhash(JSON.stringify(v))
-        console.log(tempV)
-        cache[tempV] = '88888'
-      } else {
-        cache[v] = func(v)
-      }
+        cache[tempV] = func(tempV)
+        return cache[tempV]
     } else {
       console.log('来自缓存')
     }
-    console.log(cache)
   }
 };
 
@@ -39,5 +38,6 @@ const memoize = function ( func , hasher ){
 	let quick = memoize( slow );
 	quick('111');
   quick('111');
+  quick({ one:1111 })
   quick({ one:1111 })
 })();
