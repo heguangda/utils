@@ -26,17 +26,15 @@ const memoize = function ( func , hasher ){
     if (!cache[tempV]) {
       console.log('新值')
         cache[tempV] = func(tempV)
-        return cache[tempV]
-    } else {
-      console.log('来自缓存')
     }
+    return cache[tempV]
   }
 };
 
 (function test() {
 	let quick = memoize( slow, createhash );
-	quick('111');
-  quick('111');
-  quick({ one:1111 })
-  quick({ one:1111 })
+	console.log(quick('111'));
+  console.log(quick('111'));
+  console.log(quick({ one:1111 }));
+  console.log(quick({ one:1111 }));
 })();
