@@ -13,7 +13,6 @@ const mappings = [
   { id: 'c41ed3222c70899c122feb82bc85c297', phoen: '12345777777'}
 ];
 const slow = id => {
-	console.log("i am slow");
   return mappings.find( v => v.id === id );
 };
 
@@ -22,7 +21,7 @@ const memoize = function ( func , hasher ){
 	return v => {
     let tempV = v
     if (typeof tempV === 'object') {
-      tempV = createhash(JSON.stringify(tempV))
+      tempV = hasher(JSON.stringify(tempV))
     }
     if (!cache[tempV]) {
       console.log('新值')
@@ -35,7 +34,7 @@ const memoize = function ( func , hasher ){
 };
 
 (function test() {
-	let quick = memoize( slow );
+	let quick = memoize( slow, createhash );
 	quick('111');
   quick('111');
   quick({ one:1111 })
