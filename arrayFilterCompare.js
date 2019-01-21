@@ -8,9 +8,7 @@ for (let i =0; i < 10000000; i++) {
 }
 
 function setfilter(arr){
-  let a = arr
-  let s = new Set(a)
-  let b = [...s]
+  let b = [...new Set(arr)]
   return b
 }
 
