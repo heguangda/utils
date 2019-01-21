@@ -26,7 +26,7 @@ function filter(arr){
 }
 
 console.time('filter')
-var filterResult =  filter(arr)
+var filterResult = filter(arr)
 console.timeEnd('filter')
 
 
