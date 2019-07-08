@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/heguangda/utils/issues"
   },
-  "homepage": "https://github.com/heguangda/utils#readme"
+  "homepage": "https://github.com/heguangda/utils#readme",
+  "dependencies": {
+    "events": "^3.0.0",
+    "express-session": "^1.16.2"
+  }
 }
